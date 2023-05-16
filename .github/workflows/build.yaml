@@ -17,6 +17,9 @@ jobs:
           ref: 'master'
           submodules: 'recursive'
       -
+        name: Replace Assets URL
+        run: find ./packages -type f \( -name "*.vue" -o -name "*.pug" \) -exec sed -i 's/https:\/\/xn--931a\.moe\/assets/https:\/\/oss\.isle\.moe\/assets/g' {} \;
+      -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       -
