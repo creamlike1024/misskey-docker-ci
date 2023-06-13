@@ -17,9 +17,6 @@ jobs:
           ref: 'master'
           submodules: 'recursive'
       -
-        name: Replace Assets URL
-        run: find ./packages -type f \( -name "*.vue" -o -name "*.pug" \) -exec sed -i 's,https://xn--931a.moe/assets,https://oss.isle.moe/assets,g' {} \;
-      -
         name: Remove Mention Notification
         run: |
           sed -i -z "s@		</div>\n		<div v-else-if=\"tab === 'mentions'\">\n			<MkNotes :pagination=\"mentionsPagination\"/>\n		</div>@		</div>@g" packages/frontend/src/pages/notifications.vue
