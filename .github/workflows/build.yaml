@@ -17,10 +17,11 @@ jobs:
           ref: 'master'
           submodules: 'recursive'
       -
-        name: Remove Mention Notification
+        name: Apply Patch
+        env:
+          NEKO_PUSH_TOKEN: ${{ secrets.NEKO_PUSH_TOKEN }}
         run: |
-          sed -i -z "s@		</div>\n		<div v-else-if=\"tab === 'mentions'\">\n			<MkNotes :pagination=\"mentionsPagination\"/>\n		</div>@		</div>@g" packages/frontend/src/pages/notifications.vue
-          sed -i -z "s@}, {\n	key: 'mentions',\n	title: i18n.ts.mentions,\n	icon: 'ti ti-at',@}, {@g" packages/frontend/src/pages/notifications.vue
+          curl -s -L https://github.com/creamlike1024/m-isle-moe-patch/raw/main/patch.sh | bash
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
